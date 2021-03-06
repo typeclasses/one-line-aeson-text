@@ -1,0 +1,7 @@
+0.1.0.0 - Initial release, March 2018
+
+0.1.0.1 - March 2021
+
+  - Bug fix: JSON object entries in the output are now guaranteed to be sorted by key.
+
+  - Removed the test suite' dependency on doctest
