@@ -4,4 +4,6 @@
 
   - Bug fix: JSON object entries in the output are now guaranteed to be sorted by key.
 
-  - Removed the test suite' dependency on doctest
+  - Removed the test suite' dependency on doctest.
+
+  - Tightens dependency bounds.
