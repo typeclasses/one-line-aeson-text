@@ -36,7 +36,7 @@ library
       aeson ^>= 1.5
     , base >=4.7 && <5
     , text ^>= 1.2.3
-    , unordered-containers
+    , unordered-containers ^>= 0.2
   exposed-modules:
       Data.Aeson.OneLine
 
