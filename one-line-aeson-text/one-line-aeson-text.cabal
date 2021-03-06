@@ -1,3 +1,5 @@
+cabal-version: 2.0
+
 name: one-line-aeson-text
 version: 0.1.0.0
 category: Text, JSON
@@ -19,7 +21,6 @@ license: Apache-2.0
 license-file: license.txt
 
 build-type: Simple
-cabal-version: >= 1.10
 
 extra-source-files:
     README.md
