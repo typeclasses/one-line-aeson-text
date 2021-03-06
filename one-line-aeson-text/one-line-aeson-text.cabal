@@ -35,7 +35,7 @@ library
   build-depends:
       aeson
     , base >=4.7 && <5
-    , text
+    , text ^>= 1.2.3
     , unordered-containers
   exposed-modules:
       Data.Aeson.OneLine
@@ -49,4 +49,4 @@ test-suite test
       aeson
     , base >=4.7 && <5
     , one-line-aeson-text
-    , text
+    , text ^>= 1.2.3
