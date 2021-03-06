@@ -34,7 +34,7 @@ library
   hs-source-dirs: src
   build-depends:
       aeson ^>= 1.5
-    , base >=4.7 && <5
+    , base ^>= 4.13 || ^>= 4.14
     , text ^>= 1.2.3
     , unordered-containers ^>= 0.2
   exposed-modules:
@@ -47,6 +47,6 @@ test-suite test
   main-is: test.hs
   build-depends:
       aeson ^>= 1.5
-    , base >=4.7 && <5
+    , base ^>= 4.13 || ^>= 4.14
     , one-line-aeson-text
     , text ^>= 1.2.3
