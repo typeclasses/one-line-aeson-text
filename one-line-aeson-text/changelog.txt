@@ -5,3 +5,9 @@
   - Bug fix: JSON object entries in the output are now guaranteed to be sorted by key.
   - Removed the test suite's dependency on doctest.
   - Tightens dependency bounds.
+
+0.1.0.2 - March 2021
+
+  - Relax aeson bound to >= 1.4.4
+  - Tighten text bound to >= 1.2.4
+  - Tighten unordered-containers bound to >= 0.2.10

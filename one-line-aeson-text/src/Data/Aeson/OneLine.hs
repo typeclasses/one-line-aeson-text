@@ -10,8 +10,9 @@ import qualified Data.Aeson.Types       as Aeson
 
 -- base
 import qualified Data.Foldable          as Foldable
+import           Data.Function          (on)
+import           Data.List              (sortBy)
 import           Prelude                hiding ((+))
-import           Data.List              (sort)
 
 -- text
 import           Data.Text              (Text)
@@ -64,7 +65,7 @@ renderObject :: Aeson.Object -> Text
 renderObject obj =
     Text.pack "{" + x + Text.pack "}"
     where
-        x = commaSeparate (f <$> sort (HashMap.toList obj))
+        x = commaSeparate (f <$> objectToListAsc obj)
         f (k, v) = renderTerse (Aeson.String k) +
                    Text.pack ": " + renderValue v
 
@@ -73,3 +74,6 @@ renderArray arr =
     Text.pack "[" + x + Text.pack "]"
     where
         x = commaSeparate (renderValue <$> Foldable.toList arr)
+
+objectToListAsc :: Aeson.Object -> [(Text, Aeson.Value)]
+objectToListAsc = sortBy (compare `on` fst) . HashMap.toList
