@@ -1,4 +1,5 @@
 import Data.Aeson
+import qualified Data.Aeson.Key as Key
 import Data.Aeson.OneLine
 
 import Data.Text (Text)
@@ -13,8 +14,8 @@ main =
     else die "Failure"
 
 val :: Value
-val = object [ Text.pack "name" .= Text.pack "Alonzo"
-             , Text.pack "age" .= (3 :: Integer) ]
+val = object [ Key.fromString "name" .= Text.pack "Alonzo"
+             , Key.fromString "age" .= (3 :: Integer) ]
 
 txt :: Text
 txt = Text.pack "{\"age\": 3, \"name\": \"Alonzo\"}"

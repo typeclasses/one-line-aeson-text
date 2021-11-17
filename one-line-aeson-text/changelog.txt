@@ -11,3 +11,8 @@
   - Relax aeson bound to >= 1.4.4
   - Tighten text bound to >= 1.2.4
   - Tighten unordered-containers bound to >= 0.2.10
+
+0.1.0.3 - November 2021
+
+  - Support and require aeson 2.0.*
+  - Drop unordered-containers dependency

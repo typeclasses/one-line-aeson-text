@@ -7,6 +7,7 @@ module Data.Aeson.OneLine
 -- aeson
 import qualified Data.Aeson.Text        as Aeson
 import qualified Data.Aeson.Types       as Aeson
+import qualified Data.Aeson.KeyMap      as Aeson.KeyMap
 
 -- base
 import qualified Data.Foldable          as Foldable
@@ -19,9 +20,6 @@ import           Data.Text              (Text)
 import qualified Data.Text              as Text
 import qualified Data.Text.Lazy         as LText
 import qualified Data.Text.Lazy.Builder as LText
-
--- unordered-containers
-import qualified Data.HashMap.Lazy      as HashMap
 
 (+) :: Text -> Text -> Text
 (+) = Text.append
@@ -65,8 +63,11 @@ renderObject :: Aeson.Object -> Text
 renderObject obj =
     Text.pack "{" + x + Text.pack "}"
     where
+        x :: Text
         x = commaSeparate (f <$> objectToListAsc obj)
-        f (k, v) = renderTerse (Aeson.String k) +
+
+        f :: (Aeson.Key, Aeson.Value) -> Text
+        f (k, v) = renderTerse (Aeson.toJSON k) +
                    Text.pack ": " + renderValue v
 
 renderArray :: Aeson.Array -> Text
@@ -75,5 +76,5 @@ renderArray arr =
     where
         x = commaSeparate (renderValue <$> Foldable.toList arr)
 
-objectToListAsc :: Aeson.Object -> [(Text, Aeson.Value)]
-objectToListAsc = sortBy (compare `on` fst) . HashMap.toList
+objectToListAsc :: Aeson.Object -> [(Aeson.Key, Aeson.Value)]
+objectToListAsc = sortBy (compare `on` fst) . Aeson.KeyMap.toList
