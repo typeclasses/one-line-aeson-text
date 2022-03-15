@@ -1,0 +1,6 @@
+cradle:
+  cabal:
+    - path: "./one-line-aeson-text/src"
+      component: "lib:one-line-aeson-text"
+    - path: "./one-line-aeson-text/test"
+      component: "test:test-one-line-aeson-text"
