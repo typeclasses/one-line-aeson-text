@@ -1,0 +1,4 @@
+packages: one-line-aeson-text
+
+constraints:
+    base == 4.14.*

@@ -1,0 +1,6 @@
+packages: one-line-aeson-text
+
+constraints:
+    aeson == 2.0.0.0
+  , base == 4.13.*
+  , text == 1.2.4.*

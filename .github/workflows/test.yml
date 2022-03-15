@@ -1,18 +1,16 @@
 on: [push]
 
-name: CI for 'one-line-aeson-text' library
+name: Test
 
 jobs:
   build:
-    name: Test the package
-    runs-on: ubuntu-latest
+    name: Test
+    runs-on: ${{ matrix.os }}
 
     strategy:
       matrix:
-        ghc:
-          - '8.8.3'
-          - '8.10.3'
-          - '9.0.1'
+        ghc: ['8.8', '8.10', '9.0', '9.2']
+        os: ['ubuntu-latest', 'macos-latest']
 
     steps:
       - uses: actions/checkout@v2
@@ -23,7 +21,7 @@ jobs:
           path: |
             ~/.cabal/packages
             ~/.cabal/store
-          key: ${{ runner.os }}-${{ matrix.ghc }}-${{ hashFiles('**/*.cabal', '.github/workflows/test.hs') }}
+          key: ${{ runner.os }}-${{ matrix.ghc }}-${{ hashFiles('**/*.cabal', 'configurations/ghc-${{ matrix.ghc }}.project') }}
           restore-keys: |
               ${{ runner.os }}-${{ matrix.ghc }}-
               ${{ runner.os }}-
@@ -32,9 +30,8 @@ jobs:
         with:
           ghc-version: ${{ matrix.ghc }}
 
+      - name: Build
+        run: cabal build all --project-file ./configurations/ghc-${{ matrix.ghc }}.project
+
       - name: Test
-        run: |
-            cd one-line-aeson-text
-            runhaskell --ghc-arg='-package process' ../.github/workflows/test.hs
-        env:
-          ghc: ${{ matrix.ghc }}
+        run: cabal test all --enable-tests --project-file ./configurations/ghc-${{ matrix.ghc }}.project
