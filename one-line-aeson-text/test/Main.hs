@@ -1,3 +1,5 @@
+module Main (main) where
+
 import Data.Aeson
 import qualified Data.Aeson.Key as Key
 import Data.Aeson.OneLine
