@@ -42,7 +42,7 @@ library
     exposed-modules:
         Data.Aeson.OneLine
 
-test-suite test
+test-suite test-one-line-aeson-text
     import: base
     hs-source-dirs: test
     type: exitcode-stdio-1.0
