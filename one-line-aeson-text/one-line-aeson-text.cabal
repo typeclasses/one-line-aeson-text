@@ -1,4 +1,4 @@
-cabal-version: 2.0
+cabal-version: 3.0
 
 name: one-line-aeson-text
 version: 0.1.0.3
@@ -26,26 +26,25 @@ extra-source-files:
     README.md
 
 source-repository head
-  type: git
-  location: https://github.com/typeclasses/one-line-aeson-text
+    type: git
+    location: https://github.com/typeclasses/one-line-aeson-text
+
+common base
+    default-language: Haskell2010
+    build-depends:
+        aeson ^>= 2.0
+      , base ^>= 4.13 || ^>= 4.14 || ^>= 4.15
+      , text ^>= 1.2.4
 
 library
-  default-language: Haskell2010
-  hs-source-dirs: src
-  build-depends:
-      aeson ^>= 2.0
-    , base ^>= 4.13 || ^>= 4.14 || ^>= 4.15
-    , text ^>= 1.2.4
-  exposed-modules:
-      Data.Aeson.OneLine
+    import: base
+    hs-source-dirs: src
+    exposed-modules:
+        Data.Aeson.OneLine
 
 test-suite test
-  default-language: Haskell2010
-  hs-source-dirs: test
-  type: exitcode-stdio-1.0
-  main-is: test.hs
-  build-depends:
-      aeson ^>= 2.0
-    , base ^>= 4.13 || ^>= 4.14 || ^>= 4.15
-    , one-line-aeson-text
-    , text ^>= 1.2.4
+    import: base
+    hs-source-dirs: test
+    type: exitcode-stdio-1.0
+    main-is: test.hs
+    build-depends: one-line-aeson-text
