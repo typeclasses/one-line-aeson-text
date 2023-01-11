@@ -4,7 +4,7 @@ name: one-line-aeson-text
 version: 0.1.0.4
 category: Text, JSON
 
-synopsis: Pretty-printing short Aeson values as text.
+synopsis: Pretty-printing short Aeson values as text
 
 description: A very simply pretty-printer for Aeson values that
              produces single-line output, which you may want for
@@ -30,7 +30,7 @@ source-repository head
 common base
     default-language: Haskell2010
     build-depends:
-        aeson ^>= 2.0
+      , aeson ^>= 2.0
       , base ^>= 4.13 || ^>= 4.14 || ^>= 4.15 || ^>= 4.16
       , text ^>= 1.2.4
 
@@ -45,4 +45,5 @@ test-suite test-one-line-aeson-text
     hs-source-dirs: test
     type: exitcode-stdio-1.0
     main-is: Main.hs
-    build-depends: one-line-aeson-text
+    build-depends:
+      , one-line-aeson-text
