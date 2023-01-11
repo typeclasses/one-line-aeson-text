@@ -1,7 +1,7 @@
 cabal-version: 3.0
 
 name: one-line-aeson-text
-version: 0.1.0.4
+version: 0.1.0.5
 category: Text, JSON
 
 synopsis: Pretty-printing short Aeson values as text
@@ -29,9 +29,9 @@ source-repository head
 common base
     default-language: Haskell2010
     build-depends:
-      , aeson ^>= 2.0.3
-      , base ^>= 4.13 || ^>= 4.14 || ^>= 4.15 || ^>= 4.16
-      , text ^>= 1.2.4
+      , aeson ^>= 2.0.3 || ^>= 2.1
+      , base ^>= 4.14 || ^>= 4.15 || ^>= 4.16 || ^>= 4.17
+      , text ^>= 1.2.4 || ^>= 2.0
 
 library
     import: base
