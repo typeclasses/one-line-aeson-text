@@ -33,6 +33,10 @@ ghc."9.4" = nixos-22-11.haskell.packages.ghc94.override (old: {
     overrides = combineOverrides old [ sourceOverrides depOverrides ];
 });
 
+ghc."9.6" = nixos-22-11.haskell.packages.ghc96.override (old: {
+    overrides = combineOverrides old [ sourceOverrides depOverrides ];
+});
+
 in
 
 symlinkJoin {
